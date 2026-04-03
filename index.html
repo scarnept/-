@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>GameRef — игры с рефералами</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Главный экран с выбором игры -->
+        <div id="home-screen" class="screen active">
+            <div class="header">
+                <h1>🎮 GameRef</h1>
+                <p>Выбери игру и приглашай друзей</p>
+            </div>
+            <div class="games-grid">
+                <div class="game-card" data-game="pixelworld">
+                    <div class="game-icon pixel-icon">🟦</div>
+                    <h2>PixelWorld</h2>
+                    <p>Кликер с пиксельной атмосферой</p>
+                    <div class="card-footer">
+                        <span class="click-count" id="pixel-preview-count">0</span> кликов
+                    </div>
+                </div>
+                <div class="game-card" data-game="hamster">
+                    <div class="game-icon hamster-icon">🐹</div>
+                    <h2>Hamster Kombat</h2>
+                    <p>Стань хомячьим магнатом</p>
+                    <div class="card-footer">
+                        <span class="click-count" id="hamster-preview-count">0</span> кликов
+                    </div>
+                </div>
+            </div>
+            <div class="info-note">
+                <span>✨ Нажимай на игрушку — зарабатывай очки</span><br>
+                <span>🤝 Приглашай друзей по уникальной ссылке</span>
+            </div>
+        </div>
+
+        <!-- Экран игры PixelWorld -->
+        <div id="pixelworld-screen" class="screen">
+            <div class="game-header">
+                <button class="back-btn" data-back>← Назад</button>
+                <h2>PixelWorld</h2>
+                <div class="placeholder"></div>
+            </div>
+            <div class="game-content">
+                <div class="score-box">
+                    <span class="score-label">💰 Очки</span>
+                    <span class="score-value" id="pixel-score">0</span>
+                </div>
+                <div class="click-zone" id="pixel-click-zone">
+                    <div class="click-emoji">🟦</div>
+                    <div class="click-hint">ТАПАЙ СЮДА!</div>
+                </div>
+                <div class="ref-section">
+                    <button class="ref-btn" id="pixel-ref-btn">🤝 Пригласить друга</button>
+                    <div class="ref-link-container">
+                        <input type="text" id="pixel-ref-link" readonly value="https://t.me/pixelworld/play?startapp=r6823288584">
+                        <button class="copy-btn" data-copy="pixel-ref-link">📋</button>
+                    </div>
+                    <small>Пригласи друга — получи бонус в игре!</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран игры Hamster Kombat -->
+        <div id="hamster-screen" class="screen">
+            <div class="game-header">
+                <button class="back-btn" data-back>← Назад</button>
+                <h2>Hamster Kombat</h2>
+                <div class="placeholder"></div>
+            </div>
+            <div class="game-content">
+                <div class="score-box">
+                    <span class="score-label">🌻 Семечки</span>
+                    <span class="score-value" id="hamster-score">0</span>
+                </div>
+                <div class="click-zone" id="hamster-click-zone">
+                    <div class="click-emoji">🐹</div>
+                    <div class="click-hint">ТАПАЙ ПО ХОМЯКУ!</div>
+                </div>
+                <div class="ref-section">
+                    <button class="ref-btn" id="hamster-ref-btn">🤝 Пригласить друга</button>
+                    <div class="ref-link-container">
+                        <input type="text" id="hamster-ref-link" readonly value="https://t.me/Hamster_GAme_Dev_bot/start?startapp=kentId6823288584">
+                        <button class="copy-btn" data-copy="hamster-ref-link">📋</button>
+                    </div>
+                    <small>Пригласи друга — получи бонус в игре!</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
