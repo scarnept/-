@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    padding: 16px;
+    padding-top: env(safe-area-inset-top, 16px);
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.app-container {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Экраны */
+.screen {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Главный экран */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff, #a0a8c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.header p {
+    color: #8e9aaf;
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+
+.games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.game-card {
+    background: rgba(18, 25, 45, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.game-card:active {
+    transform: scale(0.98);
+}
+
+.game-icon {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.pixel-icon {
+    text-shadow: 0 0 10px #4a90e2;
+}
+
+.hamster-icon {
+    text-shadow: 0 0 10px #f5a623;
+}
+
+.game-card h2 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.game-card p {
+    text-align: center;
+    color: #b0bedb;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+
+.card-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ffd966;
+    background: rgba(0,0,0,0.3);
+    padding: 8px;
+    border-radius: 40px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.click-count {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffb347;
+}
+
+.info-note {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    padding: 14px;
+    border-radius: 24px;
+    font-size: 0.8rem;
+    color: #8e9aaf;
+    line-height: 1.5;
+}
+
+/* Общие стили для игр */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    padding: 0 4px;
+}
+
+.back-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.back-btn:active {
+    background: rgba(255,255,255,0.2);
+    transform: scale(0.96);
+}
+
+.game-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.placeholder {
+    width: 70px;
+}
+
+.game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.score-box {
+    background: rgba(0,0,0,0.4);
+    border-radius: 60px;
+    padding: 12px 28px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,215,0,0.3);
+}
+
+.score-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffd966;
+    display: block;
+}
+
+.score-value {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.click-zone {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), rgba(0,0,0,0.3));
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.05s linear;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.click-zone:active {
+    transform: scale(0.96);
+}
+
+.click-emoji {
+    font-size: 80px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    transition: 0.05s linear;
+}
+
+.click-zone:active .click-emoji {
+    transform: scale(0.9);
+}
+
+.click-hint {
+    margin-top: 12px;
+    font-size: 0.7rem;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 1px;
+}
+
+.ref-section {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border-radius: 28px;
+    padding: 18px 16px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.ref-btn {
+    background: linear-gradient(135deg, #2b6ef0, #0d4bc0);
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 60px;
+    width: 100%;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(43,110,240,0.3);
+}
+
+.ref-btn:active {
+    transform: scale(0.97);
+    background: linear-gradient(135deg, #1f5ad6, #0a3ea0);
+}
+
+.ref-link-container {
+    display: flex;
+    gap: 8px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 60px;
+    padding: 4px 8px;
+    margin-bottom: 10px;
+}
+
+.ref-link-container input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #b0bedb;
+    font-size: 0.7rem;
+    padding: 8px 6px;
+    outline: none;
+    font-family: monospace;
+}
+
+.copy-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 4px 12px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.copy-btn:active {
+    background: rgba(255,255,255,0.3);
+    transform: scale(0.95);
+}
+
+.ref-section small {
+    color: #8e9aaf;
+    font-size: 0.7rem;
+}
+
+/* Анимация клика +1 */
+.plus-one {
+    position: fixed;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd966;
+    text-shadow: 0 0 6px #ffaa33;
+    pointer-events: none;
+    z-index: 1000;
+    animation: floatUp 0.6s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.8);
+    }
+    70% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(1.2);
+    }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 420px) {
+    body {
+        padding: 12px;
+    }
+    .click-zone {
+        width: 180px;
+        height: 180px;
+    }
+    .click-emoji {
+        font-size: 64px;
+    }
+    .score-value {
+        font-size: 2.4rem;
+    }
+}
